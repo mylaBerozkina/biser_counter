@@ -1,27 +1,19 @@
-import PyPDF2
+from get_text_from_pdf import get_text_from_pdf
 
-pdfFileObj = open('Cotton_ornament_Free.pdf', 'rb')
+text_page = get_text_from_pdf('i_love_sea.pdf')
 
-pdfReader = PyPDF2.PdfReader(pdfFileObj)
-
-pageObj = pdfReader.pages[1]
-
-textPage0 = pageObj.extract_text()
-
-pdfFileObj.close()
-
-check = textPage0.splitlines()
+check = text_page.splitlines()
+#print(check)
 i = 0
 while i < len(check):
-	if len(check[i]) < 4:
+	if len(check[i]) < 3 or check[i].count('.'):
 		check.remove(check[i])
 	else:
 		i += 1
-
+#print(check)
 ch = "".join(check)
 x = ch.split("Chart #:")
 x.pop(0)
-check = x[1][0][-5:]
 
 for i in x:
 	y = i.split("Count:")
@@ -34,6 +26,5 @@ for i in x:
 	x.insert(x.index(i), dict_item)
 	x.remove(i)
 print(x)
-
 
 
