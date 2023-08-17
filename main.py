@@ -17,10 +17,12 @@ def beads_counter(*pdf_files):
 
 	return result_dict
 
-
+# getting how many gramm of biser we need
 
 dictionary = beads_counter("Cotton_ornament_Free.pdf", "i_love_sea.pdf", "74.pdf")
 
+
+# compare our result with biser that we have
 for key in dictionary:
 	if key in dict_for_biser:
 		new_value = dict_for_biser[key] - dictionary[key]
@@ -29,6 +31,7 @@ for key in dictionary:
 		else:
 			dictionary[key] = - new_value
 
+# write a txt file for order
 
 with open("biser_order.txt", "w+") as file:
 	for i in dictionary:

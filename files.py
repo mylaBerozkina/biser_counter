@@ -1,3 +1,5 @@
+#   get dict with amount of biser that we have for now
+
 with open('Biser.txt', "r") as file:
     contents = file.read()
 

@@ -2,14 +2,14 @@ import re
 
 def create_dictionary(text_page: str):
     check = text_page.splitlines()
-
+#   remove useless info from text_page
     i = 0
     while i < len(check):
         if len(check[i]) < 3 or check[i].count('.'):
             check.remove(check[i])
         else:
             i += 1
-
+#   divide text from the page into pairs chart-count
     ch = "".join(check)
     x = ch.split("Chart #:")
     x.pop(0)
@@ -18,7 +18,7 @@ def create_dictionary(text_page: str):
         y = i.split("Count:")
         x.insert(x.index(i), y)
         x.remove(i)
-
+#   create dict for result and fill it with necessary info
     dictionary = {}
 
     for i in x:
