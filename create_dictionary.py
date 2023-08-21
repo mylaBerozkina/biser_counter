@@ -1,5 +1,6 @@
 import re
 
+
 def create_dictionary(text_page: str):
     check = text_page.splitlines()
 #   remove useless info from text_page
@@ -23,7 +24,7 @@ def create_dictionary(text_page: str):
 
     for i in x:
         key_item = re.findall(r"\d{5}", i[0])
-        if not bool(key_item):
+        if not key_item:
             key_item = [i[0][-5:]]
         try:
             dictionary[key_item[0]] = int(i[1])
